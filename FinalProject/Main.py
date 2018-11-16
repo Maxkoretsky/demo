@@ -4,12 +4,11 @@
 # https://www.analyticsvidhya.com/blog/2015/10/beginner-guide-web-scraping-beautiful-soup-python/
 # https://medium.freecodecamp.org/how-to-scrape-websites-with-python-and-beautifulsoup-5946935d93fe
 
+import urllib
 from bs4 import BeautifulSoup
 import requests
-import csv
-import urllib2
-
-
+import lxml
+import html
 # URL of site scrap
 quotepage = "https://stockx.com/supreme-waist-bag-fw18-black"
 
@@ -31,3 +30,16 @@ quotepage = "https://stockx.com/supreme-waist-bag-fw18-black"
 # price_box = soup.find(‘div’, attrs={‘class’:’price’})
 # price = price_box.text
 # print(price)
+
+
+# The url Specified 
+page_link = "https://stockx.com/supreme-waist-bag-fw18-black"
+page = requests.get(page_link)
+tree = html.fromstring(page.content)
+
+# html from StockX
+# <div class="ds-range value-container"><span class="value">$101<span> - </span>$107</span></div>
+
+price = tree.xpath('//div[@class="="ds-range value-container"]/text()')
+
+print(price)

@@ -1,16 +1,14 @@
-import urllib
+from requests import get
+
+url = "https://stockx.com/supreme-waist-bag-fw18-black"
+
+response = get(url)
+
 from bs4 import BeautifulSoup
-import requests
-import lxml
 
-# The url Specified 
-page_link = "https://stockx.com/supreme-waist-bag-fw18-black"
-page = requests.get(page_link)
-tree = html.fromstring(page.content)
+html_soup = BeautifulSoup(response.text, 'html.parser')
+type(html_soup)
 
-# html from StockX
-# <div class="ds-range value-container"><span class="value">$101<span> - </span>$107</span></div>
-
-price = tree.xpath('//div[@class="="ds-range value-container"]/text()')
-
-print(price)
+price_blackbag = html_soup.find_all('div', class_ = s-range value-container)
+print(type(price_blackbag))
+print(len(price_blackbag))
