@@ -3,43 +3,45 @@
 # https://docs.python-guide.org/scenarios/scrape/
 # https://www.analyticsvidhya.com/blog/2015/10/beginner-guide-web-scraping-beautiful-soup-python/
 # https://medium.freecodecamp.org/how-to-scrape-websites-with-python-and-beautifulsoup-5946935d93fe
+# https://www.geeksforgeeks.org/working-with-pdf-files-in-python/
+# link to how to json file
+# https://medium.com/@rqaiserr/how-to-connect-to-google-sheets-with-python-83d0b96eeea6
+# link to search
+# https://code.tutsplus.com/tutorials/sorting-and-searching-in-python--cms-25668
 
-import urllib
-from bs4 import BeautifulSoup
-import requests
-import lxml
-import html
-# URL of site scrap
-quotepage = "https://stockx.com/supreme-waist-bag-fw18-black"
+# importing the data from spreadsheet
+import datareseller
 
+# Search engine to find product
+# def linearSearch(item,my_list):
+#     found = False
+#     position = 0
+#     while position < len(my_list) and not found:
+#         if my_list[position] == item:
+#             found = True  
+#         position = position + 1
+#     return found
 
-# # query the website and return the html to the variable ‘page’
-# page = urllib.urlopen(quotepage)
+# Data = [DataReseller]
+# item = input('What item do you want to you wish to find?')
+# itemFound = linearSearch(item,DataReseller)
+# if itemFound:
+#     print('Yes, the item is in the bag')
+# else:
+#     print('Oops, your item seems not to be in the bag')
 
-# # parse the html using beautiful soup and store in variable `soup`
-# soup = beautifulsoup(page, html.parser)
+# userinput = input("choose a number")
+# selector = userinput in [3,5,2,4,1]
+# if selector == True:
+#     print("item found")
+# elif selector == false:
+#     print("Item not found")
 
-# # Take out the <div> of name and get its value
-# name_box = soup.find('h1', attrs={'class': 'name'})
+# userinput = input("choose a number")
+# if userinput in datareseller:
+#     print("Item found")
+# elif userinput in datareseller:
+#     print("Item not found")
 
-# # strip () is used to remove starting and trailing
-# name = name_box.text.strip()
-# print(name) 
+print(datareseller)
 
-# # get trade value 
-# price_box = soup.find(‘div’, attrs={‘class’:’price’})
-# price = price_box.text
-# print(price)
-
-
-# The url Specified 
-page_link = "https://stockx.com/supreme-waist-bag-fw18-black"
-page = requests.get(page_link)
-tree = html.fromstring(page.content)
-
-# html from StockX
-# <div class="ds-range value-container"><span class="value">$101<span> - </span>$107</span></div>
-
-price = tree.xpath('//div[@class="="ds-range value-container"]/text()')
-
-print(price)
