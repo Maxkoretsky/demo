@@ -1,66 +1,47 @@
-# this file was created by Chris Cozort
-# Sources: goo.gl/2KMivS 
-# now available in github
-import pygame as pg
-import random
-from settings import *
-from sprites import *
+# This file was created by Maxim Koretsky
+# Credits : 
+# https://docs.python-guide.org/scenarios/scrape/
+# https://www.analyticsvidhya.com/blog/2015/10/beginner-guide-web-scraping-beautiful-soup-python/
+# https://medium.freecodecamp.org/how-to-scrape-websites-with-python-and-beautifulsoup-5946935d93fe
+# https://www.geeksforgeeks.org/working-with-pdf-files-in-python/
+# link to how to json file
+# https://medium.com/@rqaiserr/how-to-connect-to-google-sheets-with-python-83d0b96eeea6
+# link to search
+# https://code.tutsplus.com/tutorials/sorting-and-searching-in-python--cms-25668
 
-class Game:
-    def __init__(self):
-        #init game window
-        # init pygame and create window
-        pg.init()
-        # init sound mixer
-        pg.mixer.init()
-        self.screen = pg.display.set_mode((WIDTH, HEIGHT))
-        pg.display.set_caption("jumpy")
-        self.clock = pg.time.Clock()
-        self.running = True 
-    def new(self):
-        # add all sprites to the pg group
-        self.all_sprites = pg.sprite.Group()
-        # add a player 1 to the group
-        self.player = Player()
-        self.all_sprites.add(self.player)
-        # add a player 2 to the group
-        # self.enemy = Enemy()
-        # self.all_sprites.add(self.enemy)
-        # # add a platform
-        # self.platform = Platform()
-        # self.all_sprites.add(self.platform)
-        # call the run method
-        self.run()
-    def run(self):
-        # set boolean playing to true
-        self.playing = True
-        while self.playing:
-            self.clock.tick(FPS)
-            self.events()
-            self.update()
-            self.draw()
-    def update(self):
-        self.all_sprites.update()
-        # print(pg.sprite.groupcollide(self.all_sprites, self.all_sprites, False, False))
-    def events(self):
-        for event in pg.event.get():
-            if event.type == pg.QUIT:
-                if self.playing:
-                    self.playing = False
-                self.running = False
-    def draw(self):
-        self.screen.fill(REDDISH)
-        self.all_sprites.draw(self.screen)
-        pg.display.flip()
-    def show_start_screen(self):
-        pass
-    def show_go_screen(self):
-        pass
+# importing the data from spreadsheet
+import datareseller
 
-g = Game()
+# Search engine to find product
+# def linearSearch(item,my_list):
+#     found = False
+#     position = 0
+#     while position < len(my_list) and not found:
+#         if my_list[position] == item:
+#             found = True  
+#         position = position + 1
+#     return found
 
-g.show_go_screen()
+# Data = [DataReseller]
+# item = input('What item do you want to you wish to find?')
+# itemFound = linearSearch(item,DataReseller)
+# if itemFound:
+#     print('Yes, the item is in the bag')
+# else:
+#     print('Oops, your item seems not to be in the bag')
 
-while g.running:
-    g.new()
-    g.show_go_screen()
+# userinput = input("choose a number")
+# selector = userinput in [3,5,2,4,1]
+# if selector == True:
+#     print("item found")
+# elif selector == false:
+#     print("Item not found")
+
+# userinput = input("choose a number")
+# if userinput in datareseller:
+#     print("Item found")
+# elif userinput in datareseller:
+#     print("Item not found")
+
+print(datareseller)
+
